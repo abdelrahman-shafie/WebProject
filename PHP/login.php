@@ -3,12 +3,12 @@ session_start();
 include("../db/db_connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
+    $username = trim($_POST['email']);
     $password = md5(trim($_POST['password'])); // Hash the password with MD5
 
     // Query to validate username and password
-    $stmt = $conn->prepare("SELECT id, username, role FROM users WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
+    $stmt = $conn->prepare("SELECT id, email, role FROM users WHERE email = ? AND password = ?");
+    $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Store user data in session
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
+        $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role']; // Role is either 'admin' or 'customer'
 
         // Redirect based on role
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } else {
         // If invalid credentials
-        echo "<script>alert('Invalid username or password.'); window.location.href = '../HTML/loginpage.html';</script>";
+        echo "<script>alert('Invalid email or password.'); window.location.href = '../HTML/loginpage.html';</script>";
     }
 }
 ?>
