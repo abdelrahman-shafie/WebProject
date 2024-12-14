@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #a93131;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+#content {
+    background-image: url(../Images/WhatsApp\ Image\ 2024-12-12\ at\ 13.54.32_4ee00b6d.jpg);
+    width: 2000px;
+    height: 350px;
+
+
+}
+
+#content p {
+    padding-top: 120px;
+    color: #f4f4f4;
+    font-size: x-large;
+    padding-left: 30px;
+}
+
+
+#content1 {
+    text-align: center;
+    margin-top: 50px;
+background-color: #000;
+
+
+}
+
+#image-container {
+    width: 50%;
+    float: left;
+    background-color: #1a1917;
+}
+
+#details {
+    width: 50%;
+    float: right;
+    background-color: #433c3c;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+#car-image {
+    width: 100%;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+}
+
+#details button {
+
+    background-color: #d4af37;
+    color: #fff;
+    font-size: x-large;
+    align-items: center;
+    line-height: 7px;
+    cursor: pointer;
+    width: 250px;
+    height: 30px;
+    padding: 30px;
+
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+.price {
+    width: 700px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    background-color: #e6e1d5;
+    justify-content: center;
+    margin-left: 60px;
+    
+}
+.price p{
+color: #d4af37;
+font-size: x-large;
+font-weight: bold;
+padding-top: 15px;
+justify-content: center;
+
+}
+
+/* Add your desired styles here */
+.card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-content {
+    margin-top: 20px;
+}
+
+.brand-icon,
+.model-icon {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #d4af37;
+    padding: 0px 150px;
+}
+
+.brand-name,
+.model-name {
+    color: #21134a;
+    text-align: center;
+}

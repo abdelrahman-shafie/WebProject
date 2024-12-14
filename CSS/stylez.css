@@ -1,0 +1,23 @@
+/* Ensures all images in the carousel are resized properly */
+.brand-logo {
+    max-width: 70px;  /* Try making the images smaller */
+    height: auto;     /* Maintain aspect ratio */
+}
+
+/* Ensure the carousel inner container holds all logos in a single row */
+#brandCarousel .carousel-inner {
+    display: flex;               /* Use flexbox for a row layout */
+    justify-content: space-between; /* Adjust the space between images */
+    flex-wrap: nowrap;           /* Prevent logos from wrapping into multiple rows */
+    overflow: hidden;            /* Hide overflow to avoid unwanted scroll */
+}
+
+/* Ensure carousel items don’t overflow */
+.carousel-item {
+    flex: 0 0 auto;  /* Prevent the items from expanding and force them to take up only as much space as needed */
+}
+
+/* Optional: Set width for carousel inner to accommodate all items */
+#brandCarousel {
+    width: 100%; /* Ensure full width */
+}

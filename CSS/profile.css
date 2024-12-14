@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('../images/manga.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensure the image covers the full page */
+    background-position: center center; /* Keep the image centered */
+    background-color: #000000;
+    height: 100vh; /* Use full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents scrollbars when content overflows */
+}
+
+/* Main container */
+.main-container {
+width: 90%; 
+max-width: 1200px; 
+height: auto; 
+background: rgba(195, 192, 192, 0.8); 
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+box-sizing: border-box; /* Ensures padding is inside the width */
+overflow: hidden; /* Prevents overflow when resizing */
+margin: 10px; /* Reduced margin to make the box fit closer to the screen */
+}
+
+
+/* Header section */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 32px;
+    margin: 0;
+    text-align: center;
+}
+
+/* User profile container */
+.profile {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    flex-wrap: wrap; 
+    justify-content: center; /* Centers the profile box */
+}
+
+/* Profile picture */
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #070707;
+    object-fit: cover;
+}
+
+/* User details */
+.profile-details {
+    flex-grow: 1;
+    max-width: 500px; /* Limit the width of the profile details */
+    text-align: left; /* Align text to the left */
+}
+
+.profile-details p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-details p strong {
+    color: #333;
+}
+
+/* Icons */
+.profile-details p i {
+    font-size: 18px;
+    color: #070707;
+}
+
+/* Buttons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.button-container button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #218838;
+}
+
+.button-container button#confirm {
+    display: none;
+}
+
+.success-message {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    margin-top: 20px;
+    display: none;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #636161;
+}
+/* Fully transparent input fields with no borders */
+input[type="text"], input[type="number"] {
+    background-color: transparent;
+    border: none; /* No border */
+    color: #333; /* Dark text for visibility */
+    padding: 5px;
+    outline: none; /* Remove focus outline */
+}
+
+/* Focus state for input fields */
+input[type="text"]:focus, input[type="number"]:focus {
+    outline: none; /* Ensure no outline on focus */
+}
+
+/* Button styling */
+.button-container {
+    display: flex;
+    gap: 10px; /* Adds spacing between buttons */
+    justify-content: center; /* Centers the buttons */
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#cancel-button {
+    background-color: white;
+    color: #333; /* Dark text for visibility */
+}
+
+#cancel-button:hover {
+    background-color: red;
+    color: white; /* Text turns white on hover */
+}
+
+#confirm {
+    background-color: green;
+    color: white;
+}
+
+#confirm:hover {
+    background-color: darkgreen;
+}

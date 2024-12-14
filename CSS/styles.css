@@ -1,0 +1,126 @@
+
+        * {
+            padding: 0;
+            margin: 50;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: url('../Images/ma3rad1.jpg');
+            background-size: cover; /* Ensures the image covers the entire container */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-position: center center; /* Centers the image */
+            min-height: 300px;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+        .background{
+            width: 430px;
+            height: 520px;
+            position: center;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 50%;
+            
+        }
+        .background .shape{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+        
+        .shape:first-child {
+            background: linear-gradient(#1845ad, #23a2f6);
+            left: -80px;
+            top: -80px;
+        }
+        .shape:last-child {
+            background: linear-gradient(to right, #ff512f, #f09819);
+            right: -30px;
+            bottom: -80px;
+        }
+        .home-container {
+            padding: 200px 35px;
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .button {
+            background-color: #ff512f;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .button:hover {
+            background-color: #f09819;
+        }
+        form {
+            height: 1000px; /* Keep or adjust as per your requirement */
+            width: 400px; /* Keep or adjust as per your requirement */
+            background-color: rgba(255, 255, 255, 0.13); /* Semi-transparent background */
+            position: absolute; /* Change to absolute to place it relative to the page */
+            top: 20px; /* Move the form 20px from the top of the page */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally using transform */
+            border-radius: 10px; /* Rounded corners */
+            backdrop-filter: blur(5px); /* Background blur effect */
+            border: 2px solid rgba(255, 255, 255, 0.1); /* Border color and style */
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6); /* Shadow effect */
+            padding: 50px 35px; /* Padding inside the form */
+        }
+        form *{
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: black;
+            border: black;
+        }
+        form h3{
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        
+        label{
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        input{
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        ::placeholder{
+            color: #e5e5e5;
+        }
+        button{
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    

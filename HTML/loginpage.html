@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../CSS/stylesheet.css">
+</head>
+<body>
+    <div class="background">
+       
+    </div>
+    <form action="../PHP/login.php" method="POST">
+        <h3>Login Here</h3>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <button id="hover" type="submit">Log In</button>
+
+        <p id="space">or</p>
+        <button id="ho" type="button" onclick="window.open('signup.html')">Sign Up</button>
+    </form>
+    <script type="module" src="../JS/button1.js"></script>
+    <script type="module" src="../JS/signup.js"></script>
+</body>
+</html>

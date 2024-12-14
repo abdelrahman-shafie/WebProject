@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Account</title>
+    <link rel="stylesheet" href="../CSS/profile.css" />
+    <link rel="stylesheet" href="https://cdn.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<div class="main-container">
+    <div class="header">
+        <h1>My Account</h1>
+    </div>
+
+    <div class="profile">
+        <!-- Profile Picture -->
+        <img src="../Images/tonaya.jpeg" alt="User Picture">
+
+        <div class="profile-details">
+            <p><i class="fas fa-user-circle"></i> <strong>Name:</strong>
+                <span id="display-username"></span>
+                <input type="text" id="edit-username" style="display:none;">
+            </p>
+
+            <p><i class="fas fa-id-card"></i> <strong>National ID:</strong>
+                <span id="display-nationalid"></span>
+                <input type="text" id="edit-nationalid" style="display:none;">
+            </p>
+
+            <p><i class="fas fa-phone"></i> <strong>Phone Number:</strong>
+                <span id="display-phone"></span>
+                <input type="text" id="edit-phone" style="display:none;">
+            </p>
+
+            <p><i class="fas fa-envelope"></i> <strong>Email:</strong>
+                <span id="display-email"></span>
+                <input type="text" id="edit-email" style="display:none;">
+            </p>
+
+            <p><i class="fas fa-birthday-cake"></i> <strong>Age:</strong>
+                <span id="display-age"></span>
+                <input type="number" id="edit-age" style="display:none;">
+            </p>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button id="edit-button" onclick="enableEditMode()">Edit your data</button>
+        <button id="cancel-button" onclick="cancelEdit()" style="display:none;">Cancel</button>
+        <button id="confirm" onclick="confirmDataChange()" style="display:none;">Confirm</button>
+    </div>
+
+    <div id="success-message" class="success-message" style="display:none;">
+        Your data has been successfully updated
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Tonaya Auto. All rights reserved.
+    </div>
+</div>
+
+<script>
+    let originalData = {};
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch user data on page load
+        fetch("../PHP/profile.php")
+            .then(response => response.json())
+            .then(data => {
+                // Populate the fields (display mode)
+                document.getElementById('display-username').textContent = data.username || '';
+                document.getElementById('display-nationalid').textContent = data.national_ID || '';
+                document.getElementById('display-phone').textContent = data.phone_number || '';
+                document.getElementById('display-email').textContent = data.email || '';
+                document.getElementById('display-age').textContent = data.age || '';
+
+                // Store original data for reference
+                originalData = data;
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+    });
+
+    function enableEditMode() {
+        // Hide display spans, show input fields and confirm button
+        document.getElementById('edit-button').style.display = 'none';
+        document.getElementById('confirm').style.display = 'inline-block';
+        document.getElementById('cancel-button').style.display = 'inline-block';
+
+        // For each field, copy display value into input and show input
+        toggleField('username', true);
+        toggleField('nationalid', true);
+        toggleField('phone', true);
+        toggleField('email', true);
+        toggleField('age', true);
+    }
+
+    function toggleField(field, toEditMode) {
+        const displaySpan = document.getElementById('display-' + field);
+        const editInput = document.getElementById('edit-' + field);
+
+        if (toEditMode) {
+            // Enter edit mode: hide span, show input
+            editInput.value = displaySpan.textContent;
+            displaySpan.style.display = 'none';
+            editInput.style.display = 'inline-block';
+        } else {
+            // Return to display mode: show span, hide input
+            displaySpan.textContent = editInput.value;
+            editInput.style.display = 'none';
+            displaySpan.style.display = 'inline';
+        }
+    }
+
+    function confirmDataChange() {
+        const confirmButton = document.getElementById('confirm');
+        const successMessage = document.getElementById('success-message');
+
+        // Collect updated data from input fields
+        const updatedData = {
+            username: document.getElementById('edit-username').value,
+            national_ID: document.getElementById('edit-nationalid').value,
+            phone_number: document.getElementById('edit-phone').value,
+            email: document.getElementById('edit-email').value,
+            age: document.getElementById('edit-age').value
+        };
+
+        // Send AJAX request to update_user_data.php
+        fetch("../PHP/update_profile.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;charset=UTF-8" },
+            body: JSON.stringify(updatedData)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                // Update display fields with new data
+                toggleField('username', false);
+                toggleField('nationalid', false);
+                toggleField('phone', false);
+                toggleField('email', false);
+                toggleField('age', false);
+
+                confirmButton.style.display = 'none';
+                document.getElementById('edit-button').style.display = 'inline-block';
+                document.getElementById('cancel-button').style.display = 'none';
+                
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 4000);
+            } else {
+                alert("Error updating data. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error('Error updating user data:', error);
+            alert("Error updating data. Please try again.");
+        });
+    }
+
+    function cancelEdit() {
+        // Reset the values and return to display mode
+        document.getElementById('edit-button').style.display = 'inline-block';
+        document.getElementById('confirm').style.display = 'none';
+        document.getElementById('cancel-button').style.display = 'none';
+
+        // Revert to original data (from the initial fetch)
+        document.getElementById('display-username').textContent = originalData.username || '';
+        document.getElementById('display-nationalid').textContent = originalData.national_ID || '';
+        document.getElementById('display-phone').textContent = originalData.phone_number || '';
+        document.getElementById('display-email').textContent = originalData.email || '';
+        document.getElementById('display-age').textContent = originalData.age || '';
+
+        // Hide input fields and show display spans
+        toggleField('username', false);
+        toggleField('nationalid', false);
+        toggleField('phone', false);
+        toggleField('email', false);
+        toggleField('age', false);
+    }
+    // Keyboard interaction handling
+    document.addEventListener('keydown', function(event) {
+        // Enter key to confirm data
+        if (event.key === 'Enter') {
+            confirmDataChange();
+        }
+        
+        // Arrow keys to shift focus between fields
+        const currentFocusedField = document.activeElement;
+        const inputFields = document.querySelectorAll('input[type="text"], input[type="number"]');
+        const currentIndex = Array.from(inputFields).indexOf(currentFocusedField);
+        
+        if (event.key === 'ArrowDown') {
+            // Move to the next input field
+            if (currentIndex < inputFields.length - 1) {
+                inputFields[currentIndex + 1].focus();
+            }
+        } else if (event.key === 'ArrowUp') {
+            // Move to the previous input field
+            if (currentIndex > 0) {
+                inputFields[currentIndex - 1].focus();
+            }
+        }
+    });
+</script>
+</body>
+</html>
