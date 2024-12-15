@@ -3,7 +3,7 @@ session_start();
 include("../db/db_connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['email']);
+    $email = trim($_POST['email']);
     $password = md5(trim($_POST['password'])); // Hash the password with MD5
 
     // Query to validate username and password

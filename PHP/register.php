@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = md5($password);
 
     // Check if user already exists
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? OR username = ? OR national_ID = ?");
-    $stmt->bind_param("sss", $email, $username, $national_ID);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? OR national_ID = ?");
+    $stmt->bind_param("ss", $email, $national_ID);
     $stmt->execute();
     $result = $stmt->get_result();
 
