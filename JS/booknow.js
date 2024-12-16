@@ -15,10 +15,29 @@ document.addEventListener("DOMContentLoaded", function() {
     const totalPriceElement = document.getElementById("total-price");
     const numOfDaysElement = document.getElementById("num-of-days");
     const closeConfirmationBtn = document.getElementById("close-modal"); // Close button for the confirmation modal
-
+    
     bookNowBtn.addEventListener("click", function() {
-        modal.style.display = "block";
+        // Check if the user is logged in by making an AJAX request to the server
+        fetch("../PHP/login.php?check_login=true", {
+            method: "GET",
+            credentials: "include"  // Ensure the session cookie is sent with the request for authentication
+        })
+        .then(response => response.json())  // Convert the response to JSON
+        .then(data => {
+            // If the user is logged in, show the modal
+            if (data.loggedIn) {  // Check if 'loggedIn' is true
+                modal.style.display = "block";  // Show the modal
+            } else {
+                alert("Please log in to proceed with booking.");  // Alert if not logged in
+                window.location.href = "../HTML/loginpage.html";  // Redirect to the login page
+            }
+        })
+        .catch(error => {
+            console.error("Error checking login status:", error);  // Log any network or other errors
+            alert("An error occurred while checking login status.");  // Alert the user about the error
+        });
     });
+    
 
     window.addEventListener("click", function(event) {
         if (event.target == modal) {
