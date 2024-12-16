@@ -85,7 +85,7 @@ $(document).ready(function () {
   
             // Replace car name with input field and leave the old price
             carName.html(`<input type="text" class="form-control car-name-input" value="${currentName}">`);
-            carPrice.html(`<strong>${currentPrice}</strong>`);
+            carPrice.html(`<input type="text" class="form-control car-price-input" value="${currentPrice}">`);
   
             // Change Edit button to Save button with blue color
             $(this)
