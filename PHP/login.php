@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = md5(trim($_POST['password'])); // Hash the password with MD5
 
     // Query to validate username and password
-    $stmt = $conn->prepare("SELECT id, email, role FROM users WHERE email = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT user_id, email, role FROM users WHERE email = ? AND password = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $result->fetch_assoc();
 
         // Store user data in session
-        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role']; // Role is either 'admin' or 'customer'
 
