@@ -16,7 +16,7 @@
         .background{
             width: 430px;
             height: 520px;
-            position: center;
+            position:fixed;
             transform: translate(-50%,-50%);
             left: 50%;
             top: 50%;
@@ -25,7 +25,7 @@
         .background .shape{
             height: 200px;
             width: 200px;
-            position: absolute;
+            position:relative;
             border-radius: 50%;
         }
         
@@ -46,6 +46,8 @@
             font-size: 40px;
             font-weight: 600;
             margin-bottom: 20px;
+            border-radius: 5px;
+            font-palette: dark;
         }
         p {
             font-size: 20px;
@@ -67,12 +69,12 @@
             height: 1000px; /* Keep or adjust as per your requirement */
             width: 400px; /* Keep or adjust as per your requirement */
             background-color: rgba(255, 255, 255, 0.13); /* Semi-transparent background */
-            position: absolute; /* Change to absolute to place it relative to the page */
-            top: 20px; /* Move the form 20px from the top of the page */
+            position:sticky; /* Change to absolute to place it relative to the page */
+            top: 2px; /* Move the form 20px from the top of the page */
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Center horizontally using transform */
             border-radius: 10px; /* Rounded corners */
-            backdrop-filter: blur(5px); /* Background blur effect */
+            backdrop-filter: blur(10px); /* Background blur effect */
             border: 2px solid rgba(255, 255, 255, 0.1); /* Border color and style */
             box-shadow: 0 0 40px rgba(8, 7, 16, 0.6); /* Shadow effect */
             padding: 50px 35px; /* Padding inside the form */
@@ -89,13 +91,17 @@
             font-weight: 500;
             line-height: 42px;
             text-align: center;
+            border-radius: 5px;
+            font-palette: dark;
+            color: #605a5a;
         }
 
         
         label{
             display: block;
             margin-top: 30px;
-            font-size: 16px;
+
+            font-size: 15px;
             font-weight: 500;
         }
         input{
@@ -123,4 +129,51 @@
             border-radius: 5px;
             cursor: pointer;
         }
-    
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Style for rows to display 3 inputs per line */
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-right: 30px;
+        }
+
+        .form-group:last-child {
+            margin-right: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }

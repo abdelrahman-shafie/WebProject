@@ -10,35 +10,63 @@
     <div class="background">
         
     </div>
-    <form action="../PHP/register.php" method="POST">
-        <h3>Sign Up Here</h3>
-        <label for="firstname">First Name</label>
-        <input type="text" placeholder="first name" id="firstname" name="firstname">
+    <div class="form-container">
+        <form action="../PHP/register.php" method="POST">
+            <h3>Sign Up Here</h3>
 
-        <label for="lastname">Last Name</label>
-        <input type="text" placeholder="last name" id="lastname" name="lastname">
+            <!-- Row 1 -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" placeholder="First name" id="firstname" name="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" placeholder="Last name" id="lastname" name="lastname">
+                </div>
+                
+            </div>
 
-        <label for="email">Email</label>
-        <input type="text" placeholder="email" id="email" name="email">
-    
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password">
-    
-        <label for="confirmpassword">Confirm Password</label>
-        <input type="password" placeholder="re-enter Password" id="confirmpassword" name="confirmpassword">
-    
-        <label for="age">Age</label>
-        <input type="text" placeholder="Enter your age" id="age" name="age">
-    
-        <label for="national_ID">National ID</label>
-        <input type="text" placeholder="Enter your National ID" id="national_ID" name="national_ID">
-    
-        <label for="phone_number">Phone Number</label>
-        <input type="text" placeholder="Enter your phone number" id="phone_number" name="phone_number">
-    
-        <button id="hover">Sign Up</button>
-        <script type="module" src="../JS/button1.js"></script>
-    </form>
+            <!-- Row 2 -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password" id="password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input type="password" placeholder="Re-enter Password" id="confirmpassword" name="confirmpassword">
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" placeholder="Email" id="email" name="email">
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" placeholder="Enter your age" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="national_ID">National ID</label>
+                <input type="text" placeholder="Enter your National ID" id="national_ID" name="national_ID">
+            </div>
+            <!-- Row 3 -->
+            <div class="form-row">
+                
+                <div class="form-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" placeholder="Enter your phone number" id="phone_number" name="phone_number">
+                </div>
+                
+            </div>
+            
+
+            <!-- Submit Button -->
+            <button id="hover">Sign Up</button>
+        </form>
+    </div>
     
     
     
