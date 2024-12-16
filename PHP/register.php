@@ -2,17 +2,20 @@
 include("../db/db_connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (empty($_POST['email']) || empty($_POST['username']) || empty($_POST['password']) || 
+    if (empty($_POST['email']) || empty($_POST['password']) || 
         empty($_POST['confirmpassword']) || empty($_POST['phone_number']) || 
-        empty($_POST['age']) || empty($_POST['national_ID'])) {
+        empty($_POST['age']) || empty($_POST['national_ID']) || 
+        empty($_POST['firstname']) || empty($_POST['lastname'])) {
         echo json_encode(["status" => "error", "message" => "All fields are required."]);
         exit();
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $first_name = trim($_POST['firstname']);
+    $last_name = trim($_POST['lastname']);
+    $username = $first_name . " " . $last_name; // Combine first and last names
     $email = trim($_POST['email']);
-    $username = trim($_POST['username']);
     $password = trim($_POST['password']);
     $confirmPassword = trim($_POST['confirmpassword']);
     $phone_number = trim($_POST['phone_number']);
@@ -22,11 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate inputs
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo json_encode(["status" => "error", "message" => "Invalid email address."]);
-        exit();
-    }
-
-    if (empty($username) || strlen($username) < 3) {
-        echo json_encode(["status" => "error", "message" => "Username must be at least 3 characters long."]);
         exit();
     }
 
@@ -68,8 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(["status" => "error", "message" => "User already exists."]);
     } else {
         // Insert new user with hashed password
-        $stmt = $conn->prepare("INSERT INTO users (email, username, password, phone_number, age, national_ID) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $email, $username, $hashedPassword, $phone_number, $age, $national_ID);
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, email, username, password, phone_number, age, national_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssss", $first_name, $last_name, $email, $username, $hashedPassword, $phone_number, $age, $national_ID);
 
         if ($stmt->execute()) {
             echo json_encode(["status" => "success", "message" => "User registered successfully!"]);

@@ -5,102 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Details</title>
-
-    <link rel="stylesheet" href="../CSS/cardetails2.css">
-    <link rel="stylesheet" href="../CSS/booknow.css">
-    <script src="../JS/cardetails.js" defer></script>
-    <script type="module" src="../JS/cardetails.js"></script>
+    <script src="../JS/cardetails.js"></script> <!-- External JS -->
+    <link rel="stylesheet" href="../CSS/cardetails.css">
     <script src="../JS/booknow.js"></script>
-
+    
 </head>
 
 <body>
 
-    <div class="content">
-        <h1 id="title"> Ferrari</h1>
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Inner header with custom brand (tonaya), image, and hamburger button -->
+        <div class="header-inner">
+            <img src="../Images/tonaya1.png" alt="Brand Image" class="brand-image"> <!-- Custom Brand Image -->
+     
+            <button class="hamburger-btn" onclick="toggleMenu()">☰</button> <!-- Hamburger Button -->
+        </div>
+    
+        <!-- Background video -->
+        <video class="header-video" autoplay muted loop>
+            <source src="../video/bmw.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    
+    <!-- Car Details Section -->
+    <div class="car-details">
+        
+        <img id="car-image" class="car-image" src="../Images/default_car.png" alt="Car Image" /> <!-- Placeholder for car image -->
+        <div class="car-info">
+            <h2 id="car-brand">
+                <img src="../Images/car.png" alt="Brand Icon" class="brand-icon" /> <!-- Static Car Brand Icon -->
+                <span id="brand-name">Loading...</span> <!-- Placeholder for car brand -->
+            </h2>
+            
+            <h3 id="car-model">
+                <img src="../Images/label.png" alt="Model Icon" class="model-icon" /> <!-- Static Model Icon -->
+                <span id="model-name">Loading...</span> <!-- Placeholder for car model -->
+            </h3> 
 
+            <div class="car-logo">
+                <img id="car-logo" src="../Images/default_logo.png" alt="Logo" class="logo" /> <!-- Placeholder for car logo -->
+            </div>
 
-        <p id="breadcrumb"> Home/ Ferrari 488 Spider</p>
+            <!-- Price Section -->
+            <div class="price">
+              
+                <p id="price" class="amount">Loading...</p> <!-- Placeholder for price -->
+            </div>
 
+            <!-- Book Now Button -->
+            <button id="book-now" class="book-button">Book Now</button>
+
+        </div>
     </div>
 
-    <div class="content1">
-        <div class="image-container">
-            <img id="car-image" src="" alt="Car Image" style="height: 560px;">
+    
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-btn">&times;</span>
+            <h2>Select Booking Dates</h2>
+    
+            <!-- Form for Date Submission -->
+            <form id="booking-form" method="POST">
+                <table>
+                    <tr>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                    <tr>
+                        <td><input type="date" name="start_date" required></td>
+                        <td><input type="date" name="end_date" required></td>
+                    </tr>
+                </table>
+    
+                <!-- Hidden field for car_id -->
+                <input type="hidden" name="car_id" id="car_id">
+    
+                <button type="submit" id="confirm-booking">Confirm</button>
+            </form>
         </div>
-        <div id="details">
-            <img id="car-logo" src="../Images/ferrari.jpg" alt="">
-            <h2 id="car-name"></h2>
-            <div class="price">
-                <p style="margin-left: 10px;">Per Day</p>
-                <p id="price"></p>
-            </div>
-
-            <button id="book-now">Book Now</button>
-            <div id="booking-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="close-btn">&times;</span>
-                    <h2>Select Booking Dates</h2>
-            
-                    <!-- Form for Date Submission -->
-                    <form id="booking-form" method="POST">
-                        <table>
-                            <tr>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                            </tr>
-                            <tr>
-                                <td><input type="date" name="start_date" required></td>
-                                <td><input type="date" name="end_date" required></td>
-                            </tr>
-                        </table>
-            
-                        <!-- Hidden field for car_id -->
-                        <input type="hidden" name="car_id" id="car_id">
-            
-                        <button type="submit" id="confirm-booking">Confirm</button>
-                    </form>
-                </div>
-            </div>
-            
-            
-            <div id="car-not-available-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="close-not-available-btn">&times;</span>
-                    <h2>Sorry, this car is already booked for the selected dates.</h2>
-                </div>
-            </div>
-                <!-- Confirmation Modal -->
+    </div>
+    
+    
+    <div id="car-not-available-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-not-available-btn">&times;</span>
+            <!-- Image Above the Message -->
+            <img id="car-not-available-image" src="../Images/sad.png" alt="Car Not Available" class="car-not-available-image">
+            <h2>Sorry, this car is already booked for the selected dates.</h2>
+        </div>
+    </div>
+    
+        <!-- Confirmation Modal -->
         <div id="confirmation-modal" class="modal" style="display: none;">
             <div class="modal-content">
                 <span id="close-modal" class="close">&times;</span>
+                <!-- Image Above the Confirmation Message -->
+                <img id="confirmation-image" src="../Images/smile.png" alt="Confirmation Image" class="confirmation-image">
                 <h2>Your booking has been confirmed!</h2>
                 <p id="total-price"></p> <!-- Display the total price here -->
                 <p id="num-of-days"></p> <!-- Display number of days here -->
             </div>
         </div>
         
-            <div class="card">
-                <div class="card-header">
-                    <div style="display: flex; gap: 15px;">
-                        <div><img src="../Images/tag.png" alt=""></div>
 
-                        <div>
-                            <p>Brand</p>
-                            <p id="brand-name"></p>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 15px;">
-                        <div><img src="../Images/car.png" alt=""></div>
-                        <div>
-                            <p>Model</p>
-                            <p id="model-name"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<!-- Footer Section -->
+<div class="footer">
+    <p>&copy; 2024 TONAYA. All rights reserved.</p>
+</div>
+
 </body>
 
 </html>

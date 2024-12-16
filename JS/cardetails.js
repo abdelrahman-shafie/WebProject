@@ -15,18 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
             if (data.status === "success") {
                 const car = data.car;
 
-                // Update the DOM
-                document.getElementById("title").textContent = car.brand;
-                document.getElementById("breadcrumb").textContent = car.model;
-                document.getElementById("car-image").src = car.car_image;
-                document.getElementById("car-logo").src = car.car_logo;
-                document.getElementById("car-name").textContent = car.car_name;
-                document.getElementById("price").textContent = `$${car.price_per_day}`;
+                // Update the brand name and model
                 document.getElementById("brand-name").textContent = car.brand;
-                document.getElementById("model-name").textContent = car.model;
+                document.getElementById("model-name").textContent = car.model;  // Update the car model
+                
+                // Update the car logo and other details
+                document.getElementById("car-logo").src = car.car_logo; // Make sure car_logo is the correct field for the logo URL
+                document.getElementById("car-image").src = car.car_image;
+                document.getElementById("price").textContent =car.price_per_day;  // Assuming price is a number
             } else {
                 alert(data.message);
             }
         })
-        .catch(error => console.error("Error fetching car details:", error));
+        .catch(err => {
+            console.error("Error fetching car details:", err);
+            alert("An error occurred while fetching car details.");
+        });
 });
