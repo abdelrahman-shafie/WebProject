@@ -20,15 +20,15 @@ $(document).ready(function () {
                   <div class="button-container">
                     <!-- Add Button -->
                     <button class="btn btn-success add-car" title="Add Car">
-                      <i class="fas fa-plus"></i> Add
+                       Add
                     </button>
                     <!-- Edit Button -->
                     <button class="btn btn-warning edit-car" title="Edit Car">
-                      <i class="fas fa-edit"></i> Edit
+                       Edit
                     </button>
                     <!-- Delete Button -->
                     <button class="btn btn-danger delete-car" title="Delete Car">
-                      <i class="fas fa-minus"></i> Delete
+                       Delete
                     </button>
                   </div>
                 </div>
@@ -57,7 +57,7 @@ $(document).ready(function () {
                   <!-- Input for Car Price -->
                   <div class="form-group mb-2">
                     <label>Price per Day:</label>
-                    <input type="text" class="form-control car-price-input" placeholder="Enter Price (e.g., '100 USD / Day')">
+                    <input type="text" class="form-control car-price-input" placeholder="Enter Price (e.g., 'USD 100 $')">
                   </div>
                   <!-- Save and Cancel Buttons -->
                   <div class="button-container">
