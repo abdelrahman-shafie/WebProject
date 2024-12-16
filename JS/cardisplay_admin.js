@@ -93,10 +93,10 @@ $(document).ready(function () {
             url: "../PHP/add_car.php", // PHP endpoint for adding a car
             method: "POST",
             data: {
-              name: carName,
-              daily_price: carPrice,
-              image: carImage
-            },
+              name: carName,        // Matches database field "car_name"
+              daily_price: carPrice,  // Matches "price_per_day"
+              image: carImage       // Matches "car_image"
+            },            
             success: function (response) {
               if (response.status === "success") {
                 alert("Car added successfully!");
