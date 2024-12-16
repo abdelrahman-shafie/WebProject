@@ -83,15 +83,15 @@ $(document).ready(function () {
             const currentName = carName.text();
             const currentPrice = carPrice.text();
   
-            // Replace car name and price with input fields
+            // Replace car name with input field and leave the old price
             carName.html(`<input type="text" class="form-control car-name-input" value="${currentName}">`);
-            carPrice.html(`<input type="number" class="form-control car-price-input" value="${currentPrice}">`);
+            carPrice.html(`<strong>${currentPrice}</strong>`);
   
-            // Change Edit button to Save button
+            // Change Edit button to Save button with blue color
             $(this)
               .html('<i class="fas fa-save"></i> Save')
               .removeClass("edit-car btn-warning")
-              .addClass("save-car btn-success");
+              .addClass("save-car btn-primary");
           }
         });
   
@@ -99,16 +99,14 @@ $(document).ready(function () {
         $(document).on("click", ".save-car", function () {
           const cardBody = $(this).closest(".card-body");
           const carNameInput = cardBody.find(".car-name-input").val();
-          const carPriceInput = cardBody.find(".car-price-input").val();
   
-          // Update text with input values
+          // Update text with input value and retain price
           cardBody.find(".editable-car-name").text(carNameInput);
-          cardBody.find(".editable-car-price").text(carPriceInput);
   
           // Change Save button back to Edit button
           $(this)
             .html('<i class="fas fa-edit"></i> Edit')
-            .removeClass("save-car btn-success")
+            .removeClass("save-car btn-primary")
             .addClass("edit-car btn-warning");
         });
       },
