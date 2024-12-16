@@ -38,7 +38,7 @@ $(document).ready(function () {
           $("#car-container").append(carCard);
         });
   
-        // Event listener to add a new car container
+        // Add a new car container
         $(document).on("click", ".add-car", function () {
           const newCarContainer = `
             <div class="col-md-4 car-wrapper">
@@ -67,47 +67,87 @@ $(document).ready(function () {
           $("#car-container").append(newCarContainer);
         });
   
-        // Event listener to delete the car container
+        // Delete a car container
         $(document).on("click", ".delete-car", function () {
           $(this).closest(".car-wrapper").remove();
         });
   
-        // Event listener to edit car name and price
+        // Edit car details (Name and Price)
         $(document).on("click", ".edit-car", function () {
           const cardBody = $(this).closest(".card-body");
           const carName = cardBody.find(".editable-car-name");
           const carPrice = cardBody.find(".editable-car-price");
   
-          // Convert to input fields if not already
-          if (!cardBody.find("input").length) {
-            const currentName = carName.text();
-            const currentPrice = carPrice.text();
+          // Save current values to restore on cancel
+          const oldName = carName.text();
+          const oldPrice = carPrice.text();
   
-            // Replace car name with input field and leave the old price
-            carName.html(`<input type="text" class="form-control car-name-input" value="${currentName}">`);
-            carPrice.html(`<input type="text" class="form-control car-price-input" value="${currentPrice}">`);
+          // Replace car name and price with input fields
+          carName.html(`<input type="text" class="form-control car-name-input" value="${oldName}">`);
+          carPrice.html(`<input type="number" class="form-control car-price-input" value="${oldPrice}">`);
   
-            // Change Edit button to Save button with blue color
-            $(this)
-              .html('<i class="fas fa-save"></i> Save')
-              .removeClass("edit-car btn-warning")
-              .addClass("save-car btn-primary");
-          }
+          // Show Save and Cancel buttons
+          const buttonContainer = cardBody.find(".button-container");
+          buttonContainer.html(`
+            <button class="btn btn-primary save-car" title="Save">
+              <i class="fas fa-save"></i> Save
+            </button>
+            <button class="btn btn-secondary cancel-edit" title="Cancel">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+          `);
+  
+          // Store old values temporarily to restore on Cancel
+          cardBody.data("oldName", oldName);
+          cardBody.data("oldPrice", oldPrice);
         });
   
-        // Event listener to save edited car details
+        // Save edited details
         $(document).on("click", ".save-car", function () {
           const cardBody = $(this).closest(".card-body");
-          const carNameInput = cardBody.find(".car-name-input").val();
+          const newName = cardBody.find(".car-name-input").val();
+          const newPrice = cardBody.find(".car-price-input").val();
   
-          // Update text with input value and retain price
-          cardBody.find(".editable-car-name").text(carNameInput);
+          // Update name and price fields
+          cardBody.find(".editable-car-name").text(newName);
+          cardBody.find(".editable-car-price").text(newPrice);
   
-          // Change Save button back to Edit button
-          $(this)
-            .html('<i class="fas fa-edit"></i> Edit')
-            .removeClass("save-car btn-primary")
-            .addClass("edit-car btn-warning");
+          // Restore Edit/Delete buttons
+          cardBody.find(".button-container").html(`
+            <button class="btn btn-success add-car" title="Add Car">
+              <i class="fas fa-plus"></i> Add
+            </button>
+            <button class="btn btn-warning edit-car" title="Edit Car">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger delete-car" title="Delete Car">
+              <i class="fas fa-minus"></i> Delete
+            </button>
+          `);
+        });
+  
+        // Cancel editing and restore old values
+        $(document).on("click", ".cancel-edit", function () {
+          const cardBody = $(this).closest(".card-body");
+          const oldName = cardBody.data("oldName");
+          const oldPrice = cardBody.data("oldPrice");
+  
+          // Restore old name and price
+          cardBody.find(".editable-car-name").text(oldName);
+          cardBody.find(".editable-car-price").text(oldPrice);
+  
+          // Restore Edit/Delete buttons
+          cardBody.find(".button-container").html(`
+            <button class="btn btn-success add-car" title="Add Car">
+              <i class="fas fa-plus"></i> Add
+            </button>
+            <button class="btn btn-warning edit-car" title="Edit Car">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger delete-car" title="Delete Car">
+              <i class="fas fa-minus"></i> Delete
+            </button>
+          `);
         });
       },
     });
