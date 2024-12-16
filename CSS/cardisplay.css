@@ -1,5 +1,5 @@
 .bg-image {
-  background-image: URL('/Images/tonaya3.jpg'); /* Replace with your image URL */
+  background-image: URL('../Images/tonaya3.jpg'); /* Replace with your image URL */
   background-size: cover; /* Ensures the image covers the entire container */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   background-position: center center; /* Centers the image */
@@ -14,7 +14,7 @@
   margin: 3 auto;   /* Center it horizontally */
 }
 .bg-image1 {
-  background-image: URL('/Images/tonaya3.jpg'); /* Replace with your image URL */
+  background-image: URL('../Images/tonaya3.jpg'); /* Replace with your image URL */
   background-size: cover; /* Ensures the image covers the entire container */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   background-position: unset center; /* Centers the image */

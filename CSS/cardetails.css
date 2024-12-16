@@ -1,132 +1,386 @@
+/* General Reset */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #a93131;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
 }
-
-header {
-    background-color: #000;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-}
-
-#content {
-    background-image: url(../Images/WhatsApp\ Image\ 2024-12-12\ at\ 13.54.32_4ee00b6d.jpg);
-    width: 2000px;
-    height: 350px;
-
-
-}
-
-#content p {
-    padding-top: 120px;
-    color: #f4f4f4;
-    font-size: x-large;
-    padding-left: 30px;
-}
-
-
-#content1 {
-    text-align: center;
-    margin-top: 50px;
-background-color: #000;
-
-
-}
-
-#image-container {
-    width: 50%;
-    float: left;
-    background-color: #1a1917;
-}
-
-#details {
-    width: 50%;
-    float: right;
-    background-color: #433c3c;
-    margin: 20px;
-    border-radius: 20px;
-}
-
-#car-image {
+/* Header Container */
+.header {
+    position: relative;
     width: 100%;
+    height: 280px; /* Header height */
+    overflow: hidden;
 }
 
-#logo {
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-bottom: 20px;
-}
-
-#details button {
-
-    background-color: #d4af37;
-    color: #fff;
-    font-size: x-large;
-    align-items: center;
-    line-height: 7px;
-    cursor: pointer;
-    width: 250px;
-    height: 30px;
-    padding: 30px;
-
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-.price {
-    width: 700px;
-    height: 100px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    align-items: center;
-    text-align: center;
-    background-color: #e6e1d5;
-    justify-content: center;
-    margin-left: 60px;
+/* Inner Header - Contains brand image, custom brand text (Tonaya), and hamburger button */
+.header-inner {
+    position: absolute;
+    left: 0.5px; /* Space from the left edge */
+    display: flex;
+    align-items: center; /* Vertically center items */
+    z-index: 2; /* Ensure the header content stays on top of the video */
+    width: 100%; /* Ensure it takes the full width minus left margin */
+    backdrop-filter: blur(90px); /* Apply blur effect */
+    padding: 10px; /* Space around the content */
+    box-sizing: border-box; /* Ensure padding does not affect overall width */
     
-}
-.price p{
-color: #d4af37;
-font-size: x-large;
-font-weight: bold;
-padding-top: 15px;
-justify-content: center;
-
+   
 }
 
-/* Add your desired styles here */
-.card {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
+/* Custom Brand Image */
+.brand-image {
+    max-width: 150px; /* Adjust image size */
+    height: auto;
 }
 
-.card-header {
+/* Hamburger Button */
+.hamburger-btn {
+    position: absolute;
+    right: 20px;
+  
+    background: none;
+    border: none;
+    color: rgb(5, 5, 5);
+    font-size: 30px; /* Adjust hamburger button size */
+    cursor: pointer;
+    z-index: 3; /* Ensure button is above other elements */
+}
+
+/* Video Styling */
+.header-video {
+    position: absolute;
+    top: 50%; /* Align video to the center vertically */
+    left: 50%; /* Align video to the center horizontally */
+    transform: translate(-50%, -50%); /* Perfectly center the video */
+    width: 120%; /* Increase width to cover the header */
+    height: 120%; /* Increase height for better fit */
+    object-fit: cover; /* Ensure it covers the header area */
+    z-index: -1; /* Keep the video behind other content */
+}
+
+/* Car Details Section */
+.car-details {
     display: flex;
     justify-content: space-between;
+    margin: 50px 80px;
+    padding: 20px;
+    background-color: #262626;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.card-content {
-    margin-top: 20px;
+.car-image {
+    width: 48%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.brand-icon,
-.model-icon {
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #d4af37;
-    padding: 0px 150px;
+/* Car Info Section */
+.car-info {
+    width: 48%;
+    background-color: #333333;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Required for absolute positioning */
 }
 
-.brand-name,
-.model-name {
-    color: #21134a;
+.brand-icon, .model-icon {
+    width: 40px; /* Adjust the size of the icon */
+    height: auto;
+    margin-right: 10px; /* Adds space between the icon and the text */
+    vertical-align: middle; /* Ensures the icon aligns properly with text */
+}
+
+
+/* Align logo to the top-right, slightly adjusted */
+.car-logo {
+    position: absolute; /* Absolute positioning to move logo freely */
+    top: 40%; /* Move logo closer to the top */
+    right: 50px; /* Move logo closer to the right edge */
+    transform: translateY(-50%); /* Maintain vertical centering */
+    display: block; /* Ensures logo is treated as block element */
+    z-index: 1; /* Ensures logo is above other content */
+}
+
+.car-logo .logo {
+    max-width: 200px; /* Adjusted size for a smaller logo */
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: transparent; /* Ensure the background is transparent */
+}
+
+.car-info h2 {
+    font-size: 3rem; /* Larger size for brand name */
+    color: #e6b800;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Model name styling */
+.car-info h3 {
+    font-size: 2rem; /* Slightly smaller size for model name */
+    color: #edebe3;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+/* Price Section */
+.price {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    font-size: 1.4rem; /* Reduced font size for better readability */
+    padding: 12px 20px; /* Adjusted padding for balance */
+    background-color: #262626; /* Darker background for elegance */
+    color: #e6b800; /* Gold color for the price */
+    border-radius: 10px; /* More rounded corners for luxury feel */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow */
+    font-weight: bold;
+    width: fit-content; /* Let the width adjust automatically */
+    max-width: 320px; /* Prevent it from being too wide */
+    margin-top: 20px; /* Slight margin for spacing */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.price:hover {
+    background-color: #333333; /* Darker background on hover */
+}
+
+.price p {
+    margin: 0;
+}
+
+/* Price amount */
+.price .amount {
+    font-size: 1.8rem; /* Slightly smaller font size for the price amount */
+    color: #e6b800; /* Gold color for amount */
+}
+
+.book-button {
+    background-color: #e6b800;
+    color: white;
+    font-size: 1.4rem; /* Smaller font size */
+    padding: 8px 16px; /* Reduced padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+    width: auto; /* Keep the width dynamic */
+    transition: background-color 0.3s;
+    display: block; /* Make the button a block-level element */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+.book-button:hover {
+    background-color: #cc9a00;
+}
+
+/* Modal Section */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #333333;
+    padding: 40px;
+    border-radius: 8px;
+    width: 400px;
     text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.modal-content h2 {
+    font-size: 2.5rem;
+    color: #e6b800;
+}
+
+
+
+/* Footer Section */
+.footer {
+    background-color: #333; /* Dark background for the footer */
+    color: #fff; /* White text for contrast */
+    text-align: center; /* Center the text */
+    padding: 20px 0; /* Padding for spacing */
+    position: relative; /* To ensure it's positioned below the content */
+    bottom: 0;
+    width: 100%; /* Make the footer stretch across the entire page */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2); /* Light shadow for some depth */
+}
+
+/* Footer Text Styling */
+.footer p {
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    font-size: 14px; /* Smaller font for footer */
+    margin: 0; /* Remove margin around text */
+    letter-spacing: 1px; /* Slightly increased letter spacing for readability */
+}
+
+/* Link Styling (if you add links to footer in the future) */
+.footer a {
+    color: #fff; /* White links */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.footer a:hover {
+    color: #e6b800; /* Highlight link color on hover */
+}
+
+
+/* Booking Modal Styling */
+#booking-modal {
+    display: none;
+    position: fixed; /* Center on page */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center precisely */
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for luxury feel */
+    justify-content: center;
+    align-items: center;
+}
+
+#booking-modal .modal-content {
+    background-color: #262626;
+    padding: 40px;
+    border-radius: 12px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    color: #f0f0f0;
+}
+
+#booking-modal h2 {
+    color: #e6b800; /* Gold for luxury touch */
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+#booking-modal .close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#booking-modal .close:hover {
+    color: #fff;
+}
+
+/* Luxury Table Styling */
+#booking-modal table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background-color: #333;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+#booking-modal th, #booking-modal td {
+    border: 1px solid #555;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #e6b800;
+}
+
+#booking-modal th {
+    background-color: #444;
+    color: #f0f0f0;
+    font-weight: bold;
+}
+
+#booking-modal input[type="date"] {
+    width: 90%;
+    padding: 8px;
+    text-align: center;
+    background-color: #444;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Confirm Button */
+#confirm-booking {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #e6b800;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirm-booking:hover {
+    background-color: #cc9a00;
+}
+
+/* Confirmation Details */
+#confirmation-modal #total-price, #confirmation-modal #num-of-days {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e6b800;
+}
+
+/* Confirmation and Not Available Modals */
+#confirmation-modal, #car-not-available-modal {
+    display: none;
+    position: fixed;
+    top: 80%; /* Adjust to center vertically in the middle of the screen */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker and more opaque background */
+    padding: 40px;
+    border-radius: 12px;
+    width: 500px;
+    text-align: center;
+    color: #f0f0f0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px); /* Optional: Apply background blur for a glass effect */
+}
+
+#confirmation-modal h2, #car-not-available-modal h2 {
+    font-size: 2.8rem;
+    color: #e6b800;
+    margin-bottom: 20px;
+}
+
+#confirmation-modal .close, #car-not-available-modal .close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#confirmation-modal .close:hover, #car-not-available-modal .close:hover {
+    color: #fff;
+}
+/* Image Above Confirmation Message */
+.confirmation-image , .car-not-available-image {
+    width: 100%; /* Adjust width as per your design */
+    max-width: 100px; /* Optional: Limit the max width of the image */
+    margin: 0 auto 20px auto; /* Center the image and add space below */
+    display: block; /* Ensures the image is displayed as a block */
+    border-radius: 8px; /* Optional: Add rounded corners */
 }

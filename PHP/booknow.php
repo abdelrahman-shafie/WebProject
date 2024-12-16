@@ -31,17 +31,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Extract numeric value from price_per_day (remove non-numeric characters)
             $pricePerDay = preg_replace('/[^0-9.]+/', '', $car['price_per_day']); // Remove currency symbols, spaces, etc.
             
-            // Convert to float to ensure it's a numeric value
-            $pricePerDay = floatval($pricePerDay);
+        // Convert to float to ensure it's a numeric value
+        $pricePerDay = floatval($pricePerDay);
+                
+                // Calculate the number of days between the start and end dates
+$start = new DateTime($startDate);
+$end = new DateTime($endDate);
+$interval = $start->diff($end);
+$numOfDays = $interval->days;
 
-            // Calculate the number of days between the start and end dates
-            $start = new DateTime($startDate);
-            $end = new DateTime($endDate);
-            $interval = $start->diff($end);
-            $numOfDays = $interval->days;
+// Add 1 day to the total number of days
+$numOfDays += 1;  // Increase the number of days by 1
 
-            // Calculate total price
-            $totalPrice = $numOfDays * $pricePerDay;  // Multiply days by price per day
+$totalPrice = $numOfDays * $pricePerDay;  // Calculate the total price
+
+
+           
 
             // Insert the reservation into the reservations table
             $insertQuery = "INSERT INTO reservations (car_id, start_date, end_date, num_of_days, total_price) VALUES (?, ?, ?, ?, ?)";
@@ -53,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($stmt->affected_rows > 0) {
                 echo json_encode([
                     "status" => "success",
-                    "num_of_days" => $numOfDays,
+                    "num_of_days" => $numOfDays ,
                     "total_price" => $totalPrice
                 ]);
             } else {
