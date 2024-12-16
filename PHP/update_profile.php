@@ -26,7 +26,7 @@ $phone_number = isset($data['phone_number']) ? trim($data['phone_number']) : '';
 $age = isset($data['age']) ? (int)$data['age'] : 0;
 
 // Update the user's data in the database
-$stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, national_ID = ?, phone_number = ?, age = ? WHERE id = ?");
+$stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, national_ID = ?, phone_number = ?, age = ? WHERE user_id = ?");
 $stmt->bind_param("ssssii", $username, $email, $national_ID, $phone_number, $age, $user_id);
 $success = $stmt->execute();
 $stmt->close();
