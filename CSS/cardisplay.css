@@ -35,6 +35,35 @@ z-index: 10;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
 }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+  border-radius: 50%; /* Optional: Make them round */
+  padding: 10px; /* Add some padding for size */
+}
+
+/* Reduce opacity for a more obscure effect */
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker on hover */
+}
+.carousel-item img {
+  width: 100px; /* Set fixed width for logos */
+  height: 100px; /* Set fixed height for logos */
+  object-fit: contain; /* Maintain aspect ratio */
+  margin: auto; /* Center align logos */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.carousel-item img:hover {
+  transform: scale(1.2); /* Slightly enlarge the logo */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for emphasis */
+}
+
+/* Optional styling for carousel container */
+.logo-carousel {
+  padding: 20px;
+  background-color: #fff;
+}
 .gradient {
   background: hsla(199, 44%, 7%, 1);
 
@@ -97,32 +126,3 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0a151a", en
   transform: scale(1.05);
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
-  border-radius: 50%; /* Optional: Make them round */
-  padding: 10px; /* Add some padding for size */
-}
-
-/* Reduce opacity for a more obscure effect */
-.carousel-control-prev-icon:hover,
-.carousel-control-next-icon:hover {
-  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker on hover */
-}
-.carousel-item img {
-  width: 100px; /* Set fixed width for logos */
-  height: 100px; /* Set fixed height for logos */
-  object-fit: contain; /* Maintain aspect ratio */
-  margin: auto; /* Center align logos */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.carousel-item img:hover {
-  transform: scale(1.2); /* Slightly enlarge the logo */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for emphasis */
-}
-
-/* Optional styling for carousel container */
-.logo-carousel {
-  padding: 20px;
-  background-color: #fff;
-}
