@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             // If the user is logged in, show the modal
             if (data.loggedIn) {  // Check if 'loggedIn' is true
-                modal.style.display = "block";  // Show the modal
+                modal.style.display = "flex";  // Show the modal
             } else {
                 alert("Please log in to proceed with booking.");  // Alert if not logged in
                 window.location.href = "../HTML/loginpage.html";  // Redirect to the login page
@@ -91,11 +91,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     closeNotAvailableBtn.addEventListener("click", function() {
         notAvailableModal.style.display = "none";
+        modal.style.display = "none";
     });
 
     // Close the confirmation modal when the close button is clicked
     closeConfirmationBtn.addEventListener("click", function() {
         confirmationModal.style.display = "none";
+        modal.style.display = "none";
     });
 
     // Close the confirmation modal when clicking outside of it
