@@ -126,3 +126,35 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0a151a", en
   transform: scale(1.05);
 }
 
+.back-to-top {
+  display: flex;             /* Use flexbox for centering */
+  justify-content: center;   /* Horizontally center content */
+  align-items: center;       /* Vertically center content */
+  width: 50px;               /* Set button width */
+  height: 50px;              /* Set button height */
+  background-color: #333;    /* Dark background for visibility */
+  border-radius: 8px;        /* Rounded corners for the box */
+  color: white;              /* Icon color */
+  font-size: 24px;           /* Increase icon size */
+  text-decoration: none;     /* Remove underline */
+}
+
+.back-to-top:hover {
+  background-color: #555;    /* Slightly lighter on hover */
+  color: #fff;
+}
+
+.fa-angle-double-up {
+  position: right;
+  width: 30px;   /* Sets button width */
+  height: 30px;
+  background:#55acee00;
+  color: white;
+  margin-bottom: 12px;
+  margin-right: 10px;
+}
+.custom-size-btn {
+  width: 30px;   /* Sets button width */
+  height: 30px;   /* Sets button height */
+  font-size: 18px; /* Adjusts font size */
+}
