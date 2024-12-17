@@ -157,3 +157,14 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0a151a", en
   padding: 20px;
   background-color: #fff;
 }
+
+body{
+  overflow-x: hidden;
+}
+
+ul li {
+  color: gold; /* Set color to gold */
+  font-size: 1.2rem; /* Adjust size */
+  margin: 0 2px; /* Add spacing between stars */
+  list-style: none; /* Remove bullet points */
+}
