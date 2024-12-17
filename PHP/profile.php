@@ -6,10 +6,8 @@ session_start();
 // Assuming the user ID is stored in session after login
 // Adjust according to your login logic
 if (!isset($_SESSION['user_id'])) {
-    // If user is not logged in, return empty or handle as needed
-    header('Content-Type: application/json');
-    echo json_encode([]);
-    exit;
+    header("Location: ../HTML/loginpage.html");
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];
