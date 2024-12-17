@@ -6,7 +6,8 @@ session_start();
 // Assuming the user ID is stored in session after login
 // Adjust according to your login logic
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../HTML/loginpage.html");
+    header('Content-Type: appliation/json');
+    echo json_encode([]);
     exit();
 }
 
