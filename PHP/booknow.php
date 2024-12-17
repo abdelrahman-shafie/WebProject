@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../DB/db_connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,6 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $endDate = trim($_POST['end_date']);
     $carId = intval($_POST['car_id']);
 
+    if (!isset($_SESSION['user_id'])) {
+        echo json_encode(["status" => "error", "message" => "User not logged in."]);
+        exit;
+    }
+    
+    $user_id = $_SESSION['user_id']; // Retrieve the user ID from session
+    
     // Check if car is already booked for the selected dates
     $checkQuery = "SELECT * FROM reservations WHERE car_id = ? AND (start_date BETWEEN ? AND ? OR end_date BETWEEN ? AND ?)";
     $stmt = $conn->prepare($checkQuery);
@@ -49,9 +57,9 @@ $totalPrice = $numOfDays * $pricePerDay;  // Calculate the total price
            
 
             // Insert the reservation into the reservations table
-            $insertQuery = "INSERT INTO reservations (car_id, start_date, end_date, num_of_days, total_price) VALUES (?, ?, ?, ?, ?)";
+            $insertQuery = "INSERT INTO reservations (car_id, user_id, start_date, end_date, num_of_days, total_price) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($insertQuery);
-            $stmt->bind_param("issii", $carId, $startDate, $endDate, $numOfDays, $totalPrice);
+            $stmt->bind_param("iissid", $carId, $user_id, $startDate, $endDate, $numOfDays, $totalPrice);
             $stmt->execute();
 
             // Check if the reservation was successfully inserted

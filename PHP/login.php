@@ -51,8 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user['role'] === 'admin') {
             header("Location: ../HTML/cardisplay_admin.html"); // Redirect to admin dashboard
         } elseif ($user['role'] === 'customer') {
-            header("Location: ../HTML/profile.html"); // Redirect to customer dashboard
+            header("Location: ../HTML/homepage.html"); // Redirect to customer dashboard
         }
+        
         exit();
     } else {
         // If invalid credentials
