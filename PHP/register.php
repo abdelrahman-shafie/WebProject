@@ -70,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ssssssss", $first_name, $last_name, $email, $username, $hashedPassword, $phone_number, $age, $national_ID);
 
         if ($stmt->execute()) {
-            echo json_encode(["status" => "success", "message" => "User registered successfully!"]);
+            header("Location: ../HTML/loginpage.html");
+            exit();
         } else {
             echo json_encode(["status" => "error", "message" => "Registration failed."]);
         }
